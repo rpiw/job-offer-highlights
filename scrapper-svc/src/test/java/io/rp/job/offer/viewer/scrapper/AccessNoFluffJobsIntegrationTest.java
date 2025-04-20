@@ -30,7 +30,7 @@ class AccessNoFluffJobsIntegrationTest {
     }
 
     private static final String SALARY_HTML_B2B_ONLY = """
-            <common-posting-salaries-list _ngcontent-serverapp-c2302630848="" _nghost-serverapp-c529458852=""><div _ngcontent-serverapp-c529458852="" 
+            <common-posting-salaries-list _ngcontent-serverapp-c2302630848="" _nghost-serverapp-c529458852=""><div _ngcontent-serverapp-c529458852=""
             class="salary"><h4 _ngcontent-serverapp-c529458852="" class="tw-mb-0"> 13&nbsp;500  – 21&nbsp;900 <!----><!----> 
             PLN </h4><div _ngcontent-serverapp-c529458852="" class="paragraph tw-text-xs lg:tw-text-sm tw-flex tw-items-center 
             tw-flex-wrap type tw-relative"><span _ngcontent-serverapp-c529458852=""> + VAT (B2B) miesięcznie&nbsp; 
@@ -43,7 +43,7 @@ class AccessNoFluffJobsIntegrationTest {
             """;
 
     private static final String SALARY_HTML_B2B_AND_COE = """
-            <common-posting-salaries-list _ngcontent-serverapp-c2302630848="" _nghost-serverapp-c529458852=""><div _ngcontent-serverapp-c529458852="" 
+            <common-posting-salaries-list _ngcontent-serverapp-c2302630848="" _nghost-serverapp-c529458852=""><div _ngcontent-serverapp-c529458852=""
             class="salary ng-star-inserted"><h4 _ngcontent-serverapp-c529458852="" class="tw-mb-0"> 26&nbsp;880  – 29&nbsp;400 <!----><!----> 
             PLN </h4><div _ngcontent-serverapp-c529458852="" class="paragraph tw-text-xs lg:tw-text-sm tw-flex tw-items-center tw-flex-wrap type tw-relative">
             <span _ngcontent-serverapp-c529458852=""> + VAT (B2B) miesięcznie&nbsp; </span><a _ngcontent-serverapp-c529458852="" 
