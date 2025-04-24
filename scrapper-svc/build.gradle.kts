@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.4.4"
@@ -23,6 +25,12 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+	}
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -46,6 +54,16 @@ dependencies {
 
 }
 
+springBoot {
+	mainClass.set("io.rp.job.offer.viewer.JobOfferScrapperApplication")
+	buildInfo()
+}
+
+tasks.named<BootJar>("bootJar") {
+	archiveFileName.set("app.jar")
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
