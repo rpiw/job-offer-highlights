@@ -46,9 +46,9 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	implementation("com.microsoft.playwright:playwright:1.51.0")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("io.micrometer:micrometer-tracing-bridge-otel")
-	implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
+//	implementation("org.springframework.boot:spring-boot-starter-actuator")
+//	implementation("io.micrometer:micrometer-tracing-bridge-otel")
+//	implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
 
 	testImplementation("org.assertj:assertj-core:3.27.3")
 
