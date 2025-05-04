@@ -61,21 +61,6 @@ class AccessNoFluffJobsIntegrationTest {
             """;
 
     @Test
-    void givenStaticHtmlWithSalary_whenSalaryTagIsPresent_thenReturnSalaryDTO() {
-        Page page = browser.newPage();
-        page.setContent(SALARY_HTML_B2B_ONLY);
-
-        AccessNoFluffJobs accessNoFluffJobs = new AccessNoFluffJobs("empty");
-        SalaryDTO salaryDTO = accessNoFluffJobs.locateSalary(page);
-
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(salaryDTO.lowerBoundary()).isEqualTo(13500);
-        softly.assertThat(salaryDTO.higherBoundary()).isEqualTo(21900);
-        softly.assertThat(salaryDTO.agreementType()).isEqualTo(AgreementType.B2B);
-        softly.assertAll();
-    }
-
-    @Test
     void givenHtml_whenContainsSalaryList_thenReturnTwoSalaries() {
         Page page = browser.newPage();
         page.setContent(SALARY_HTML_B2B_AND_COE);

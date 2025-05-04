@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.4.4"
@@ -23,6 +25,12 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+	}
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -33,19 +41,33 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
 
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.postgresql:postgresql:42.7.5")
+
+	implementation("org.hibernate.validator:hibernate-validator:9.0.0.CR1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	implementation("com.microsoft.playwright:playwright:1.51.0")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("io.micrometer:micrometer-tracing-bridge-otel")
-	implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
+//	implementation("org.springframework.boot:spring-boot-starter-actuator")
+//	implementation("io.micrometer:micrometer-tracing-bridge-otel")
+//	implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
 
 	testImplementation("org.assertj:assertj-core:3.27.3")
 
 }
 
+springBoot {
+	mainClass.set("io.rp.job.offer.viewer.JobOfferScrapperApplication")
+	buildInfo()
+}
+
+tasks.named<BootJar>("bootJar") {
+	archiveFileName.set("app.jar")
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+

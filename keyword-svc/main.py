@@ -18,6 +18,6 @@ async def extract_keywords(job_offer_extract: JobOfferExtract):
     return bert_extraction(job_offer_extract.content)
 
 
-def bert_extraction(text: str) ->  list[tuple[str, float]] | list[list[tuple[str, float]]]:
+def bert_extraction(text: str) -> list[tuple[str, float]] | list[list[tuple[str, float]]]:
     kw_model = KeyBERT()
     return kw_model.extract_keywords(text)
