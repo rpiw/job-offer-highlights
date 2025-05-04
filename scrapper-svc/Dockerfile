@@ -10,7 +10,7 @@ COPY --from=gradle-root gradlew settings.gradle.kts ./
 
 RUN --mount=type=cache,target=/home/gradle/.gradle,from=gradle-root,source=.gradle \
     --mount=type=bind,target=src \
-    ./gradlew clean build --no-daemon -x test
+    ./gradlew clean build -x test
 
 FROM mcr.microsoft.com/playwright/java:v1.51.0-noble AS runtime
 ENV USER=user
@@ -23,4 +23,4 @@ RUN apt-get update && apt-get install --no-install-recommends -y curl \
 USER $USER
 EXPOSE 8080
 COPY --from=build /app/scrapper-svc/build/libs /app/
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "/app/app.jar"]

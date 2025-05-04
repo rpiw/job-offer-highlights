@@ -2,6 +2,7 @@ package io.rp.job.offer.viewer;
 
 import io.rp.job.offer.viewer.scrapper.AccessNoFluffJobs;
 import io.rp.job.offer.viewer.scrapper.ScrappingResult;
+import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,10 @@ public class URLController {
         return ResponseEntity.ok(scrap);
     }
 
+
+    public record UrlDTO(@NotBlank String url) {
+
+    }
 
 }
 

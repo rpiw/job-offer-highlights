@@ -28,10 +28,10 @@ public class CrawlerController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<ExtractedLinksDTO> noFluffJobsCrawler(@RequestBody @NotNull SearchTagDTO searchTag) {
         try {
-            List<NoFluffJobsCrawler.LocatorResult> start = noFluffJobsService.extractWebsite(searchTag.tag());
+            List<NoFluffJobsCrawler.LocatorResult> start = noFluffJobsService.extractMainPage(searchTag.tag());
             return ResponseEntity.ok(new ExtractedLinksDTO(start));
         } catch (RuntimeException e) {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(429), "Something went wrong, visiting exception not supported yet");
+            throw new ResponseStatusException(HttpStatusCode.valueOf(500), "Something went wrong, domain specific exception not supported yet");
         }
     }
 

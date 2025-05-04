@@ -4,6 +4,6 @@ import java.util.List;
 
 interface CrawlerService {
 
-    List<NoFluffJobsCrawler.LocatorResult> extractWebsite(String startingUrl);
+    List<NoFluffJobsCrawler.LocatorResult> extractMainPage(String startingUrl);
 
 }
